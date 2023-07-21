@@ -1,4 +1,37 @@
 <!DOCTYPE html>
+<?php
+require('connect.php');
+
+if (isset($_GET['delete'])) {
+   $id = $_GET['delete'];
+
+   // Delete the row from the database using the given ID
+   $deleteSql = "DELETE FROM rent WHERE rent_id = $id";
+
+   if ($con->query($deleteSql) === TRUE) {
+       echo '<script>alert("Row deleted successfully"); window.location.href = "car rental.php";</script>';
+   } else {
+       echo "Error deleting record: " . $con->error;
+   }
+}
+
+
+// Include the database connection file
+
+// Query to fetch data from the offer_pool table along with its corresponding user data from the register table
+$sql = "SELECT * from rent";
+
+// Perform the query
+$result = mysqli_query($con, $sql);
+
+// Check if the query was successful
+if (!$result) {
+    die("Query failed: " . mysqli_error($con));
+}
+?>
+<?php
+require('connect.php');
+?>
 <html lang="en">
    <head>
       <!-- basic -->
@@ -131,6 +164,24 @@
                            </div>
                         </div>
                      </div>
+
+<div class="container p-3 w-50 bg-dark rounded ">
+<!-- ... (other form fields) ... -->
+<form method="post" action="process_form.php" enctype="multipart/form-data">
+   <input type="text" name="name" class="form-control mt-1 border" placeholder="Enter name" required>
+   <input type="text" name="mobile_number" class="form-control mt-4" placeholder="Mobile number" pattern="[789][0-9]{9}" maxlength="10" required>
+   <input type="number" name="price" class="form-control mt-4" placeholder="Price" required>
+   <input type="text" name="vehicle_number" class="form-control mt-4" placeholder="Vehicle Number" required>
+   <input type="text" name="vehicle_model" class="form-control mt-4" placeholder="Vehicle Model" required>
+   <input type="file" name="vehicle_image" class="form-control mt-4 mb-4" placeholder="Vehicle Image" required>
+   <input type="submit" class="btn btn-success " value="Submit">
+</form>
+<!-- ... (other form fields) ... -->
+
+</div>
+<br>
+
+                  
                      <!-- row -->
                      <div class="row">
                         <!-- table section -->
@@ -145,31 +196,39 @@
                                        <thead class="thead-dark">
                                           <tr>
                                              <th>#</th>
-                                             <th>User Name</th>
-                                             <th>Vehicle Type</th>
+                                             <th> Name</th>
+                                             <th>Mobile Number</th>
                                             
-                                             <th>Vehicle No.</th>
+                                             <th>Price</th>
                                             
                                              
-                                             <th>rental shop</th>
-                                             <th>Date</th>
-                                             <th>time</th>
-                                             <th>vovchur</th>
+                                             <th>Vehicle number</th>
+                                             <th>Vehicle model</th>
+                                             <th>Vehicle Image</th>
+                                             <th></th>
+                                             
                                           </tr>
                                        </thead>
                                        <tbody>
-                                          <tr>
-                                             <td>1</td>
-                                             <td>david</td>
-                                             <td>Baleno</td>
-                                            
-                                             <td>KL 53 4514</td>
-                                             
-                                             <td> Rocky car rental shop</td>
-                                             <td>12/07/2023</td>
-                                             <td>9 pm</td>
-                                             <td>aysha textiles</td>
-                                          </tr>
+                                       <?php
+                  $counter = 1;
+                  while ($row = mysqli_fetch_assoc($result)) {
+                  ?>
+                     <tr>
+                        <td><?php echo $counter; ?></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['mobile_no']; ?></td>
+                        <td><?php echo $row['price']; ?></td>
+                        <td><?php echo $row['vehicle_no']; ?></td>
+                        <td><?php echo $row['vehicle_model']; ?></td>
+                        <td><img src="uploads/<?php echo $row['vehicle_image']; ?>" width="200px"></td>
+                       
+                        <td>  <a href="car rental.php?delete=<?php echo $row['rent_id']; ?>"><button class="btn btn-dark">Delete</button></a></td>
+                     </tr>
+                  <?php
+                  $counter++;
+                  }
+                  ?>
                                        </tbody>
                                     </table>
                                  </div>
@@ -236,3 +295,9 @@
       <script src="js/semantic.min.js"></script>
    </body>
 </html>
+<style>
+   .border{
+
+      border-radius="40px";
+   }
+   </style>
