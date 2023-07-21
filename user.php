@@ -85,15 +85,13 @@ if (!$result) {
                   <h4>GO SHARE POOLING SERVICE</h4>
                   <ul class="list-unstyled components">
                      <li>
-                        <a href="dashboard.html" ><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
+                        <a href=" dashboard.php" ><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
                         
                      </li>
                      <li><a href="user.php"><i class="fa fa-user orange_color"></i> <span>USER  DETAILS</DETAILS> </span></a></li>
                     
-                     <li><a href="notification.php"><i class="fa fa-bell purple_color2"></i> <span>NOTIFICATION</span></a></li>
-                    
-                     <li><a href="ads.php"><i class="fa fa-diamond blue1_color"></i> <span>MANAGE ADS</span></a></li>
-                     <li><a href="complaint1.php"><i class="fa fa-comments-o green_color"></i> <span>COMPLAINTS</span></a></li>
+                     
+                      <li><a href="complaint1.php"><i class="fa fa-comments-o green_color"></i> <span>COMPLAINTS</span></a></li>
 
 
 
@@ -101,8 +99,7 @@ if (!$result) {
 
 
                      
-                     <li><a href="reviews.php"><i class="fa fa-star-half-empty yellow_color"></i> <span>APP RATING & REVIWS</span></a></li>
-                     
+                      
                     
                   </ul>
                </div>            </nav>
@@ -130,7 +127,7 @@ if (!$result) {
                                        
                                       
                                        <a class="dropdown-item" href="about.html">About</a>
-                                       <a class="dropdown-item" href="index.html"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                       <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>
                               </ul>

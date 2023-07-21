@@ -46,15 +46,15 @@
                      </div>
                   </div>
                   <div class="login_form">
-                     <form>
+                     <form action="login.php" method="post">
                         <fieldset>
                            <div class="field">
-                              <label class="label_field">Email Address</label>
-                              <input type="email" name="email" placeholder="E-mail" />
-                           </div>
+                              <!-- <label class="label_field">Email Address</label> -->
+                              <input type="email" class="w-100 lead " name="email" placeholder="Email Adress" />
+                           </div><br><br>
                            <div class="field">
-                              <label class="label_field">Password</label>
-                              <input type="password" name="password" placeholder="Password" />
+                              <!-- <label class="label_field">Password</label> -->
+                              <input type="password" class="w-100 lead" name="password" placeholder="Password" />
                            </div>
                            <div class="field">
                               
@@ -62,7 +62,7 @@
                            </div>
                            <div class="field margin_0">
                               <label class="label_field hidden">hidden label</label>
-                             <center> <a  class="main_bt" href="dashboard.html">Sign In</a></center>
+                             <center> <input type="submit" class="btn btn-dark w-100 border" value="Sign in"</center>
                            </div>
                         </fieldset>
                      </form>
@@ -88,3 +88,11 @@
       <script src="js/custom.js"></script>
    </body>
 </html>
+<style>
+   .border{
+      border-radius:40px ;
+   }
+   .border:hover{
+      background-color: rgb(11, 80, 132) ;
+   }
+</style>

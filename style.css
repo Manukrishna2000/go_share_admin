@@ -3316,7 +3316,7 @@ table.projects tr td:first-child {
 }
 
 .login_form form .field label.label_field {
-    margin: 0 30px 0 0;
+    margin: 0 30px 0 -14px;
     width: 115px;
     line-height: 45px;
     text-align: right;
